@@ -1,16 +1,25 @@
-function App() {
-  return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 text-center">
-        <h1 className="text-4xl font-bold text-[#1e3a8a] mb-4">
-          ¡Planity en React! 🚀
-        </h1>
-        <p className="text-slate-500 font-medium">
-          El frontend está configurado y listo para brillar.
-        </p>
-      </div>
-    </div>
-  )
-}
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Registro';
 
-export default App
+// Un componente súper básico para que no dé error. ¡Mañana lo haremos bonito!
+const DashboardTemp = () => (
+  <div className="h-screen flex items-center justify-center bg-slate-100">
+    <h1 className="text-3xl font-bold text-slate-800">¡Has entrado a la app! 🚀 (Próximamente Dashboard)</h1>
+  </div>
+);
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Register />} />
+        {/* Añadimos la ruta a la que vamos tras el Login */}
+        <Route path="/dashboard" element={<DashboardTemp />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
