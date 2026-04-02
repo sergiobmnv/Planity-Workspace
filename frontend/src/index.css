@@ -2,26 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animación para que las olas se muevan infinitamente */
-@keyframes moveWaves {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+html {
+  scroll-behavior: smooth;
 }
 
-.animate-waves-slow {
-  width: 200%; /* Hacemos el SVG el doble de grande para que pueda desplazarse */
-  animation: moveWaves 25s linear infinite;
-}
-
-.animate-waves-fast {
-  width: 200%;
-  animation: moveWaves 15s linear infinite;
-}
-
-/* Efecto de resplandor para el botón */
+/* Efecto de resplandor para el botón principal */
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.1); }
+  40% { opacity: 0.5; transform: scale(1.1); }
 }
 
 .btn-glow {

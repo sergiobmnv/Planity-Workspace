@@ -25,17 +25,27 @@ export default function Register() {
 
   return (
     <div 
-      className="min-h-screen w-full flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-12 px-4" 
+      className="min-h-screen w-full flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-12 px-4 relative" 
       style={{ backgroundImage: "url('/src/assets/fondo-registro.png')" }}
     >
-      {/* 1. BLOQUE SUPERIOR: Logo y Título (Fuera de la tarjeta, centrado) */}
+      {/* BOTÓN FLOTANTE: Volver al inicio */}
+      <Link 
+        to="/" 
+        className="absolute top-6 left-6 flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-600 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-sm border border-slate-200 transition-all hover:scale-105 z-20"
+      >
+        <span>←</span> Volver al inicio
+      </Link>
+
+      {/* BLOQUE SUPERIOR: Logo y Título */}
       <div className="text-center mb-8">
-        <div className="text-blue-600 text-6xl mb-4 flex justify-center">▲</div>
+        <Link to="/" className="text-blue-600 text-6xl mb-4 flex justify-center hover:scale-110 transition-transform duration-300">
+          ▲
+        </Link>
         <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Crear cuenta</h1>
         <p className="mt-2 text-sm text-slate-600">para unirte a Planity</p>
       </div>
 
-      {/* 2. TARJETA BLANCA: El bloque del formulario */}
+      {/* TARJETA BLANCA */}
       <div className="w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-xl p-8 z-10">
         
         {mensaje.texto && (
@@ -94,7 +104,6 @@ export default function Register() {
           </button>
         </form>
 
-        {/* 3. ENLACE INFERIOR: Texto "después de los bloques" */}
         <div className="text-center mt-8 text-sm text-slate-600">
           ¿Ya tienes cuenta?{' '}
           <Link to="/login" className="font-bold text-blue-600 hover:text-blue-800 transition-colors">
