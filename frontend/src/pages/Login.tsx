@@ -25,19 +25,29 @@ export default function Login() {
 
   return (
     <div 
-      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat w-full" 
-      style={{ backgroundImage: "url('/src/assets/fondo-registro.png')" }} // Usamos el mismo lienzo para coherencia
+      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat w-full relative" 
+      style={{ backgroundImage: "url('/src/assets/fondo-registro.png')" }}
     >
+      {/* BOTÓN FLOTANTE: Volver al inicio */}
+      <Link 
+        to="/" 
+        className="absolute top-6 left-6 flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-600 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-sm border border-slate-200 transition-all hover:scale-105 z-20"
+      >
+        <span>←</span> Volver al inicio
+      </Link>
+
       <div className="w-full flex flex-col items-center justify-center px-6 py-12">
         
-        {/* BLOQUE SUPERIOR: Logo y Título */}
+        {/* BLOQUE SUPERIOR: Logo (ahora clickable) y Título */}
         <div className="text-center mb-8 w-full">
-          <div className="text-blue-600 text-5xl mb-3 flex justify-center">▲</div>
+          <Link to="/" className="text-blue-600 text-5xl mb-3 flex justify-center hover:scale-110 transition-transform duration-300">
+            ▲
+          </Link>
           <h1 className="text-3xl font-extrabold text-[#0f172a] tracking-tight">Iniciar sesión</h1>
           <p className="mt-1 text-sm text-[#475569]">en Planity para continuar</p>
         </div>
 
-        {/* TARJETA BLANCA (Estilo GitHub) */}
+        {/* TARJETA BLANCA */}
         <div className="w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-lg p-8 z-10">
           
           {mensaje.texto && (
@@ -78,7 +88,6 @@ export default function Login() {
             </button>
           </form>
 
-          {/* ENLACE INFERIOR (Fuera de los inputs pero dentro de la estructura) */}
           <div className="text-center mt-8 text-sm text-slate-600">
             ¿No tienes cuenta?{' '}
             <Link to="/registro" className="font-bold text-blue-600 hover:text-blue-800 transition-colors">
